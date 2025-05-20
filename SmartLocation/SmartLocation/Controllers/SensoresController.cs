@@ -8,52 +8,102 @@ namespace SmartLocation.Controllers
     [Route("api/[controller]")]
     public class SensoresController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly Contexto _contexto;
 
-        public SensoresController(AppDbContext context)
+        public SensoresController(Contexto contexto)
         {
-            _context = context;
+            _contexto = contexto;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Sensor>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Sensor>>> GetSensores()
         {
-            return Ok(await _context.Sensores.ToListAsync());
+            return Ok(await _contexto.Sensor.ToListAsync());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Sensor>> GetById(int id)
+        public async Task<ActionResult<Sensor>> GetSensorPorId(int id)
         {
-            var sensor = await _context.Sensores.FindAsync(id);
-            if (sensor == null) return NotFound();
+            var sensor = await _contexto.Sensor.FindAsync(id);
+
+            if (sensor == null)
+            {
+                return NotFound();
+            }
+
             return Ok(sensor);
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Sensor>> Create(Sensor sensor)
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<Sensor>>> BuscarPorNumero([FromQuery] int numero)
         {
-            _context.Sensores.Add(sensor);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetById), new { id = sensor.Id }, sensor);
+            var sensores = await _contexto.Sensor
+                .Where(s => s.Numero == numero)
+                .ToListAsync();
+
+            if (sensores == null || sensores.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(sensores);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Sensor>> CriarSensor(Sensor sensor)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _contexto.Sensor.Add(sensor);
+            await _contexto.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetSensorPorId), new { id = sensor.Id }, sensor);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Sensor sensor)
+        public async Task<IActionResult> AtualizarSensor(int id, Sensor sensor)
         {
-            if (id != sensor.Id) return BadRequest();
-            _context.Entry(sensor).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            if (id != sensor.Id)
+            {
+                return BadRequest();
+            }
+
+            _contexto.Entry(sensor).State = EntityState.Modified;
+
+            try
+            {
+                await _contexto.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_contexto.Sensor.Any(e => e.Id == id))
+                {
+                    return NotFound();
+                }
+                throw;
+            }
+
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> ExcluirSensor(int id)
         {
-            var sensor = await _context.Sensores.FindAsync(id);
-            if (sensor == null) return NotFound();
-            _context.Sensores.Remove(sensor);
-            await _context.SaveChangesAsync();
-            return NoContentResult();
+            var sensor = await _contexto.Sensor.FindAsync(id);
+
+            if (sensor == null)
+            {
+                return NotFound();
+            }
+
+            _contexto.Sensor.Remove(sensor);
+            await _contexto.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }
+

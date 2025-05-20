@@ -1,60 +1,116 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using SmartLocation.Data;
 using SmartLocation.Models;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace SmartLocation.Controllers
 {
     [ApiController]
-    [Route("api/[controlller]")]
-    public class MotosCrontroller : ControllerBase
+    [Route("api/[controller]")]
+    public class MotosController : ControllerBase
     {
-        private readonly AppDbContext _context;
+        private readonly Contexto _contexto;
 
-        public MotosController(AppDbContext context)
+        public MotosController(Contexto contexto)
         {
-            _context = context;
+            _contexto = contexto;
         }
 
+        // GET: api/Motos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Moto>>> GetAll()
+        public async Task<ActionResult<IEnumerable<Moto>>> GetMotos()
         {
-            return Ok(await _context.Motos.ToListAsync());
+            return Ok(await _contexto.Moto.ToListAsync());
         }
 
+        // GET: api/Motos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Moto>> GetById(int id)
+        public async Task<ActionResult<Moto>> GetMotoPorId(int id)
         {
-            var moto = await _context.Motos.FindAsync(id);
-            if (moto == null) return NotFound();
+            var moto = await _contexto.Moto.FindAsync(id);
+
+            if (moto == null)
+            {
+                return NotFound();
+            }
+
             return Ok(moto);
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Moto>> Create(Moto moto)
+        // GET: api/Motos/search?modelo=CG
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<Moto>>> BuscarPorModelo([FromQuery] string modelo)
         {
-            _context.Motos.Add(moto);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetById), new { id = moto.Id }, moto);
+            var motos = await _contexto.Moto
+                .Where(m => m.Modelo.Contains(modelo))
+                .ToListAsync();
+
+            if (motos == null || motos.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return Ok(motos);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, Moto moto)
+        // POST: api/Motos
+        [HttpPost]
+        public async Task<ActionResult<Moto>> CriarMoto(Moto moto)
         {
-            if (id != moto.Id) return BadRequest();
-            _context.Entry(moto).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            _contexto.Moto.Add(moto);
+            await _contexto.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetMotoPorId), new { id = moto.Id }, moto);
+        }
+
+        // PUT: api/Motos/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> AtualizarMoto(int id, Moto moto)
+        {
+            if (id != moto.Id)
+            {
+                return BadRequest();
+            }
+
+            _contexto.Entry(moto).State = EntityState.Modified;
+
+            try
+            {
+                await _contexto.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_contexto.Moto.Any(e => e.Id == id))
+                {
+                    return NotFound();
+                }
+                throw;
+            }
+
             return NoContent();
         }
 
+        // DELETE: api/Motos/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> ExcluirMoto(int id)
         {
-            var moto = await _context.Motos.FindAsync(id);
-            if (moto == null) return NotFound();
-            _context.Motos.Remove(moto);
-            await _context.SaveChangesAsync();
+            var moto = await _contexto.Moto.FindAsync(id);
+
+            if (moto == null)
+            {
+                return NotFound();
+            }
+
+            _contexto.Moto.Remove(moto);
+            await _contexto.SaveChangesAsync();
+
             return NoContent();
         }
     }
 }
+
