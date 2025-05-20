@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using SmartLocation.Data;
 using SmartLocation.Models;
 
 namespace SmartLocation.Controllers
