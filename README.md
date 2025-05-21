@@ -25,13 +25,13 @@ Exemplo 2D:
 
 ________________________________________________________________________________________
 Resumo do Código: <br>
-Objetivos do Challenge:
 
- Implementar uma API Restful utilizando ASP.NET Core (Controllers ou Minimal API)
+
+- Implementar uma API Restful utilizando ASP.NET Core (Controllers ou Minimal API) 
  
  ![image](https://github.com/user-attachments/assets/a804a960-2deb-4f6e-a967-06bde5482cd0)
 
- o Apresentar um CRUD pelo menos (GET (mais de 3 rotas e devidamente parametrizadas com QueryParams ou 
+- Apresentar um CRUD pelo menos (GET (mais de 3 rotas e devidamente parametrizadas com QueryParams ou 
 PathParams), POST, PUT, DELETE)
 GET:
 
@@ -53,7 +53,7 @@ DELETE:
 
 
 
- o Apresentar os retornos HTTP adequados para cada rota (ok, NotFound, BadRequest, NoContent, Created)
+- Apresentar os retornos HTTP adequados para cada rota (ok, NotFound, BadRequest, NoContent, Created)
 OK:
 
 ![image](https://github.com/user-attachments/assets/b57562c1-920d-4030-a370-4f83a001736d)
@@ -76,7 +76,7 @@ Created:
 
 
  
- o Integração do Banco de dados Oracle via EF Core, com utilização de migrations para criação das tabelas
+- Integração do Banco de dados Oracle via EF Core, com utilização de migrations para criação das tabelas
  Alteração feita no .json:
  
 ![image](https://github.com/user-attachments/assets/c4773195-55ab-4183-85a7-2ffbf7ee4216)
@@ -92,7 +92,7 @@ Conexão com Oracle no program.cs:
 
 
 
- o Open API Implementada seguindo os padrões para documentação das API's com interface gráfica (Swagger, 
+- Open API Implementada seguindo os padrões para documentação das API's com interface gráfica (Swagger, 
 Redoc ou Scalar)
 
 Swagger Motos:
