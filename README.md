@@ -3,6 +3,7 @@
 Descrição da Solução:
 
 o	Descrição dos objetivos da solução idealizada (Peso 20%)
+
  A solução envolve desenvolver um sistema de localização de cada moto em tempo real, com a utilização de tags bluetooth e mapa digital em tempo real.
 Utilizaremos tanto o visual, com identificações numéricas de cada moto, e dentro desse objeto, colocaremos nossas tags para que seja possível realizar o rastreio.
 Objetivos principais:
