@@ -23,8 +23,8 @@ Exemplo 2D:
 ![image](https://github.com/user-attachments/assets/d49ee753-e343-452f-8b1a-5aafaf1479a8)
 
 
-Desenvolvimento de um programa para o Challenge da matéria Advanced Business Development with .NET
-
+________________________________________________________________________________________
+Resumo do Código: <br>
 Objetivos do Challenge:
 
  Implementar uma API Restful utilizando ASP.NET Core (Controllers ou Minimal API)
