@@ -100,6 +100,10 @@ Conexão com Oracle no program.cs:
 - Open API Implementada seguindo os padrões para documentação das API's com interface gráfica (Swagger, 
 Redoc ou Scalar)
 
+Swagger EnderecoPatios:
+
+![image](https://github.com/user-attachments/assets/d1c6ffe0-b52c-4326-9dd6-cd27b997e329)
+
 Swagger Motos:
 
 ![image](https://github.com/user-attachments/assets/cec61a4e-983a-48a7-b7d8-eb7b85db6052)
@@ -113,6 +117,9 @@ Swagger Usuarios:
 ![image](https://github.com/user-attachments/assets/1edb9520-8c43-4778-a694-f9826492e575)
 
 Schemas:
-![image](https://github.com/user-attachments/assets/b8ca6ded-9d6a-45c2-bc37-507d427d7daa)
+
+![image](https://github.com/user-attachments/assets/6bcb34b9-a1a5-47f2-98b7-1cfaca2a691c)
+
+
 
 
