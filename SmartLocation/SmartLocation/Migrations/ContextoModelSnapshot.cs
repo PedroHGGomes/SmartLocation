@@ -21,33 +21,71 @@ namespace SmartLocation.Migrations
 
             OracleModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("SmartLocation.Models.EnderecoPatio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("ID_ENDERECO");
+
+                    OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Cep")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("CEP");
+
+                    b.Property<string>("Estado")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("ESTADO");
+
+                    b.Property<string>("Logradouro")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("LOGRADOURO");
+
+                    b.Property<string>("Numero")
+                        .IsRequired()
+                        .HasColumnType("NVARCHAR2(2000)")
+                        .HasColumnName("NUMERO");
+
+                    b.Property<int>("Patio")
+                        .HasColumnType("NUMBER(10)")
+                        .HasColumnName("NUMERO_PATIO");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ENDERECO_PATIO");
+                });
+
             modelBuilder.Entity("SmartLocation.Models.Moto", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("Id");
+                        .HasColumnName("ID_MOTO");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Ano")
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("Ano");
+                        .HasColumnName("ANO");
 
                     b.Property<string>("Modelo")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("Modelo");
+                        .HasColumnName("MODELO");
 
                     b.Property<string>("Placa")
                         .HasMaxLength(10)
                         .HasColumnType("NVARCHAR2(10)")
-                        .HasColumnName("Placa");
+                        .HasColumnName("PLACA");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Moto");
+                    b.ToTable("MOTO");
                 });
 
             modelBuilder.Entity("SmartLocation.Models.Sensor", b =>
@@ -55,17 +93,17 @@ namespace SmartLocation.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("Id");
+                        .HasColumnName("ID_SENSOR");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("Numero")
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("Numero");
+                        .HasColumnName("NUMERO");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Sensor");
+                    b.ToTable("SENSOR");
                 });
 
             modelBuilder.Entity("SmartLocation.Models.Usuario", b =>
@@ -73,7 +111,7 @@ namespace SmartLocation.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("NUMBER(10)")
-                        .HasColumnName("Id");
+                        .HasColumnName("ID_USUARIO");
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
@@ -81,17 +119,17 @@ namespace SmartLocation.Migrations
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("Email");
+                        .HasColumnName("EMAIL");
 
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("NVARCHAR2(100)")
-                        .HasColumnName("Nome");
+                        .HasColumnName("NOME");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Usuario");
+                    b.ToTable("USUARIO");
                 });
 #pragma warning restore 612, 618
         }

@@ -3,28 +3,28 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SmartLocation.Models
 {
-    [Table("Moto")]
+    [Table("MOTO")]
     public class Moto
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("Id")]
+        [Column("ID_MOTO")]
         [Display(Name = "ID")]
         public int Id { get; set; }
 
         [Required]
         [StringLength(100)]
-        [Column("Modelo")]
+        [Column("MODELO")]
         [Display(Name = "MODELO")]
         public string Modelo { get; set; }
 
         [Required]
-        [Column("Ano")]
+        [Column("ANO")]
         [Display(Name = "ANO")]
         public int Ano { get; set; }
 
         [StringLength(10)]
-        [Column("Placa")]
+        [Column("PLACA")]
         [Display(Name = "PLACA")]
         public string? Placa { get; set; }
     }

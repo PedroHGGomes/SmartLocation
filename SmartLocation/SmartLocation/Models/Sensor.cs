@@ -3,17 +3,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SmartLocation.Models
 {
-    [Table("Sensor")]
+    [Table("SENSOR")]
     public class Sensor
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("Id")]
+        [Column("ID_SENSOR")]
         [Display(Name = "ID")]
         public int Id { get; set; }
 
         [Required]
-        [Column("Numero")]
+        [Column("NUMERO")]
         [Display(Name = "NUMERO")]
         public int Numero { get; set; }
     }

@@ -10,6 +10,8 @@ namespace SmartLocation.Models
 
         public DbSet<Usuario> Usuario { get; set; }
 
+        public DbSet<EnderecoPatio> EnderecosPatio { get; set; }
+
         public DbSet<Moto> Moto { get; set; }
 
         public DbSet<Sensor> Sensor { get; set; }
