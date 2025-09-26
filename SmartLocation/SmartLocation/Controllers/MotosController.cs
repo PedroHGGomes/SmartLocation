@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SmartLocation.Models;
 using Microsoft.EntityFrameworkCore;
+using SmartLocation.Api.Infrastructure;
 
 namespace SmartLocation.Controllers
 {
@@ -17,9 +18,18 @@ namespace SmartLocation.Controllers
 
         // GET: api/Motos
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Moto>>> GetMotos()
+        public async Task<ActionResult<PagedResult<Moto>>> GetMotos(
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 10)
         {
-            return Ok(await _contexto.Moto.ToListAsync());
+            var baseUrl = $"{Request.Scheme}://{Request.Host}{Request.Path}";
+
+            var result = await _contexto.Moto
+                .AsNoTracking()
+                .OrderBy(m => m.Id)
+                .ToPagedResultAsync(page, pageSize, baseUrl);
+
+            return Ok(result);
         }
 
         // GET: api/Motos/5
@@ -40,11 +50,17 @@ namespace SmartLocation.Controllers
         [HttpGet("search")]
         public async Task<ActionResult<IEnumerable<Moto>>> BuscarPorModelo([FromQuery] string modelo)
         {
+            if (string.IsNullOrWhiteSpace(modelo))
+            {
+                return BadRequest("O parâmetro 'modelo' é obrigatório.");
+            }
+
             var motos = await _contexto.Moto
                 .Where(m => m.Modelo.Contains(modelo))
+                .AsNoTracking()
                 .ToListAsync();
 
-            if (motos == null || motos.Count == 0)
+            if (!motos.Any())
             {
                 return NotFound();
             }
@@ -73,7 +89,7 @@ namespace SmartLocation.Controllers
         {
             if (id != moto.Id)
             {
-                return BadRequest();
+                return BadRequest("ID da URL diferente do objeto enviado.");
             }
 
             _contexto.Entry(moto).State = EntityState.Modified;

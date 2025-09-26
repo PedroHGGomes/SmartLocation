@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartLocation.Models;
+using SmartLocation.Api.Infrastructure;
 
 namespace SmartLocation.Controllers
 {
     [ApiController]
+    [Route("api/[controller]")]
     public class EnderecoPatiosController : ControllerBase
     {
         private readonly Contexto _context;
@@ -14,31 +16,47 @@ namespace SmartLocation.Controllers
             _context = context;
         }
 
-        // GET: api/EnderecoPatios
+        // GET: api/EnderecoPatios (com paginação + HATEOAS)
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<EnderecoPatio>>> GetEnderecosPatio()
+        public async Task<ActionResult<PagedResult<EnderecoPatio>>> GetEnderecosPatio(
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 10)
         {
-            return await _context.EnderecosPatio.ToListAsync();
+            var baseUrl = $"{Request.Scheme}://{Request.Host}{Request.Path}";
+
+            var result = await _context.EnderecosPatio
+                .AsNoTracking()
+                .OrderBy(e => e.Id)
+                .ToPagedResultAsync(page, pageSize, baseUrl);
+
+            return Ok(result);
         }
 
         // GET: api/EnderecoPatios/5
         [HttpGet("{id}")]
         public async Task<ActionResult<EnderecoPatio>> GetEnderecoPatio(int id)
         {
-            var enderecoPatio = await _context.EnderecosPatio.FindAsync(id);
+            var enderecoPatio = await _context.EnderecosPatio
+                .AsNoTracking()
+                .FirstOrDefaultAsync(e => e.Id == id);
 
             if (enderecoPatio == null)
             {
                 return NotFound();
             }
 
-            return enderecoPatio;
+            return Ok(enderecoPatio);
         }
 
         // POST: api/EnderecoPatios
         [HttpPost]
         public async Task<ActionResult<EnderecoPatio>> PostEnderecoPatio(EnderecoPatio enderecoPatio)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             _context.EnderecosPatio.Add(enderecoPatio);
             await _context.SaveChangesAsync();
 
@@ -51,7 +69,7 @@ namespace SmartLocation.Controllers
         {
             if (id != enderecoPatio.Id)
             {
-                return BadRequest();
+                return BadRequest("ID da URL diferente do objeto enviado.");
             }
 
             _context.Entry(enderecoPatio).State = EntityState.Modified;
@@ -66,10 +84,7 @@ namespace SmartLocation.Controllers
                 {
                     return NotFound();
                 }
-                else
-                {
-                    throw;
-                }
+                throw;
             }
 
             return NoContent();
@@ -97,4 +112,5 @@ namespace SmartLocation.Controllers
         }
     }
 }
+
 

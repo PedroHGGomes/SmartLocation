@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartLocation.Models;
+using SmartLocation.Api.Infrastructure;
 
 namespace SmartLocation.Controllers
 {
@@ -15,18 +16,29 @@ namespace SmartLocation.Controllers
             _contexto = contexto;
         }
 
-        // GET: api/Usuarios
+        // GET: api/Usuarios (com paginação + HATEOAS)
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios()
+        public async Task<ActionResult<PagedResult<Usuario>>> GetUsuarios(
+            [FromQuery] int page = 1,
+            [FromQuery] int pageSize = 10)
         {
-            return Ok(await _contexto.Usuario.ToListAsync());
+            var baseUrl = $"{Request.Scheme}://{Request.Host}{Request.Path}";
+
+            var result = await _contexto.Usuario
+                .AsNoTracking()
+                .OrderBy(u => u.Id)
+                .ToPagedResultAsync(page, pageSize, baseUrl);
+
+            return Ok(result);
         }
 
         // GET: api/Usuarios/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Usuario>> GetUsuarioPorId(int id)
         {
-            var usuario = await _contexto.Usuario.FindAsync(id);
+            var usuario = await _contexto.Usuario
+                .AsNoTracking()
+                .FirstOrDefaultAsync(u => u.Id == id);
 
             if (usuario == null)
             {
@@ -40,11 +52,17 @@ namespace SmartLocation.Controllers
         [HttpGet("search")]
         public async Task<ActionResult<IEnumerable<Usuario>>> BuscarPorNome([FromQuery] string nome)
         {
+            if (string.IsNullOrWhiteSpace(nome))
+            {
+                return BadRequest("O parâmetro 'nome' é obrigatório.");
+            }
+
             var usuarios = await _contexto.Usuario
                 .Where(u => u.Nome.Contains(nome))
+                .AsNoTracking()
                 .ToListAsync();
 
-            if (usuarios == null || usuarios.Count == 0)
+            if (!usuarios.Any())
             {
                 return NotFound();
             }
@@ -73,7 +91,7 @@ namespace SmartLocation.Controllers
         {
             if (id != usuario.Id)
             {
-                return BadRequest();
+                return BadRequest("ID da URL diferente do objeto enviado.");
             }
 
             _contexto.Entry(usuario).State = EntityState.Modified;
@@ -112,3 +130,4 @@ namespace SmartLocation.Controllers
         }
     }
 }
+
