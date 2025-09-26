@@ -2,7 +2,6 @@
 using SmartLocation.Models;
 using Microsoft.EntityFrameworkCore;
 
-
 namespace SmartLocation.Controllers
 {
     [ApiController]

@@ -4,7 +4,6 @@ using SmartLocation.Models;
 
 namespace SmartLocation.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class EnderecoPatiosController : ControllerBase
     {
