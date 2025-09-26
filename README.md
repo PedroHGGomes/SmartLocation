@@ -52,14 +52,14 @@ git clone https://github.com/PedroHGGomes/SmartLocation.git
 <br>
 cd SmartLocation
 
-
+___
 Configure a connection string em appsettings.json:
 
 "ConnectionStrings": {
   "DefaultConnection": "User Id=USUARIO;Password=SENHA;Data Source=localhost:1521/orcl"
 }
 
-
+___
 Crie o banco de dados via migrations:
 <br>
 dotnet ef database update
