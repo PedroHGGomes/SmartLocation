@@ -175,25 +175,25 @@ Exemplos de Payloads
 **POST /api/usuarios**
 
 {
-  "nome": "Pedro Gomes",
-  "email": "pedro.gomes@mottu.com"
+  "nome": "Pedro Gomes",<br>
+  "email": "pedro.gomes@mottu.com"<br>
 }
 ___
 
 **GET /api/usuarios?page=1&pageSize=2**
 
 {
-  "items": [
-    { "id": 1, "nome": "Pedro Gomes", "email": "pedro.gomes@mottu.com" },
-    { "id": 2, "nome": "Luiz Felipe Abreu", "email": "luiz.abreu@mottu.com" }
-  ],
-  "page": 1,
-  "pageSize": 2,
-  "totalCount": 5,
-  "totalPages": 3,
-  "links": {
-    "self": "http://localhost:5000/api/usuarios?page=1&pageSize=2",
-    "next": "http://localhost:5000/api/usuarios?page=2&pageSize=2"
+  "items": [<br>
+    { "id": 1, "nome": "Pedro Gomes", "email": "pedro.gomes@mottu.com" },<br>
+    { "id": 2, "nome": "Luiz Felipe Abreu", "email": "luiz.abreu@mottu.com" }<br>
+  ],<br>
+  "page": 1,<br>
+  "pageSize": 2,<br>
+  "totalCount": 5,<br>
+  "totalPages": 3,<br>
+  "links": {<br>
+    "self": "http://localhost:5000/api/usuarios?page=1&pageSize=2",<br>
+    "next": "http://localhost:5000/api/usuarios?page=2&pageSize=2"<br>
   }
 }
 ___
@@ -202,27 +202,27 @@ ___
 **POST /api/motos**
 
 {
-  "placa": "ABC1234",
-  "renavam": "98765432100",
-  "modelo": "Honda CG",
-  "ano": 2022,
-  "quilometragem": 15000,
-  "status": "Disponivel",
-  "patioId": 1
+  "placa": "ABC1234",<br>
+  "renavam": "98765432100",<br>
+  "modelo": "Honda CG",<br>
+  "ano": 2022,<br>
+  "quilometragem": 15000,<br>
+  "status": "Disponivel",<br>
+  "patioId": 1<br>
 }
 
 ___
 **GET /api/motos/1**
 
 {
-  "id": 1,
-  "placa": "ABC1234",
-  "renavam": "98765432100",
-  "modelo": "Honda CG",
-  "ano": 2022,
-  "quilometragem": 15000,
-  "status": "Disponivel",
-  "patioId": 1
+  "id": 1,<br>
+  "placa": "ABC1234",<br>
+  "renavam": "98765432100",<br>
+  "modelo": "Honda CG",<br>
+  "ano": 2022,<br>
+  "quilometragem": 15000,<br>
+  "status": "Disponivel",<br>
+  "patioId": 1<br>
 }
 
 **Sensores**
@@ -230,7 +230,7 @@ ___
 **POST /api/sensores**
 
 {
-  "numero": 101
+  "numero": 101<br>
 }
 
 
@@ -245,23 +245,23 @@ Endereços de Pátio
 **POST /api/enderecopatios**
 
 {
-  "logradouro": "Rua das Flores",
-  "numero": "123",
-  "estado": "SP",
-  "cep": "01234000",
-  "patio": "Pátio Central"
+  "logradouro": "Rua das Flores",<br>
+  "numero": "123",<br>
+  "estado": "SP",<br>
+  "cep": "01234000",<br>
+  "patio": "Pátio Central"<br>
 }
 
 
 **GET /api/enderecopatios/1**
 
 {
-  "id": 1,
-  "logradouro": "Rua das Flores",
-  "numero": "123",
-  "estado": "SP",
-  "cep": "01234000",
-  "patio": "Pátio Central"
+  "id": 1,<br>
+  "logradouro": "Rua das Flores",<br>
+  "numero": "123",<br>
+  "estado": "SP",<br>
+  "cep": "01234000",<br>
+  "patio": "Pátio Central"<br>
 }
 
 
