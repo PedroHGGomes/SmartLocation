@@ -30,17 +30,18 @@ Exemplo 2D:
 Arquitetura escolhida:
 
 Optamos por uma arquitetura ASP.NET Core Web API com Entity Framework Core integrado ao Oracle Database.
+
 Essa escolha foi feita porque:
 
-O EF Core facilita o mapeamento objeto-relacional, simplificando a persistência dos dados.
+ • O EF Core facilita o mapeamento objeto-relacional, simplificando a persistência dos dados.
 
-Migrations permitem versionamento do banco e facilidade de evolução do schema.
+ • Migrations permitem versionamento do banco e facilidade de evolução do schema.
 
-A separação em Controllers, Models e DataContext segue boas práticas REST.
+ • A separação em Controllers, Models e DataContext segue boas práticas REST.
 
-Swagger/OpenAPI fornece documentação interativa, simplificando testes e integração.
+ • Swagger/OpenAPI fornece documentação interativa, simplificando testes e integração.
 
-A arquitetura é escalável e permite futuras integrações com IoT (sensores) e aplicativos móveis.
+ • A arquitetura é escalável e permite futuras integrações com IoT (sensores) e aplicativos móveis.
 
 Como executar a API:<br>
 
