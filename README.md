@@ -27,7 +27,52 @@ Exemplo 2D:
 
 ![image](https://github.com/user-attachments/assets/d49ee753-e343-452f-8b1a-5aafaf1479a8)
 
+Arquitetura escolhida:
 
+Optamos por uma arquitetura ASP.NET Core Web API com Entity Framework Core integrado ao Oracle Database.
+Essa escolha foi feita porque:
+
+O EF Core facilita o mapeamento objeto-relacional, simplificando a persistência dos dados.
+
+Migrations permitem versionamento do banco e facilidade de evolução do schema.
+
+A separação em Controllers, Models e DataContext segue boas práticas REST.
+
+Swagger/OpenAPI fornece documentação interativa, simplificando testes e integração.
+
+A arquitetura é escalável e permite futuras integrações com IoT (sensores) e aplicativos móveis.
+
+Como executar a API:<br>
+
+
+Clone este repositório:
+
+git clone https://github.com/PedroHGGomes/SmartLocation.git
+<br>
+cd SmartLocation
+
+
+Configure a connection string em appsettings.json:
+
+"ConnectionStrings": {
+  "DefaultConnection": "User Id=USUARIO;Password=SENHA;Data Source=localhost:1521/orcl"
+}
+
+
+Crie o banco de dados via migrations:
+<br>
+dotnet ef database update
+
+
+Rode a aplicação:
+<br>
+dotnet run
+
+
+Acesse o Swagger:
+<br>
+http://localhost:5254/swagger
+<br>
 ________________________________________________________________________________________
 Resumo do Código: <br>
 
@@ -121,6 +166,102 @@ Schemas:
 ![image](https://github.com/user-attachments/assets/6bcb34b9-a1a5-47f2-98b7-1cfaca2a691c)
 
 Payload:
+
+Exemplos de Payloads
+
+Usuários
+
+POST /api/usuarios
+
+{
+  "nome": "Pedro Gomes",
+  "email": "pedro.gomes@mottu.com"
+}
+
+
+GET /api/usuarios?page=1&pageSize=2
+
+{
+  "items": [
+    { "id": 1, "nome": "Pedro Gomes", "email": "pedro.gomes@mottu.com" },
+    { "id": 2, "nome": "Luiz Felipe Abreu", "email": "luiz.abreu@mottu.com" }
+  ],
+  "page": 1,
+  "pageSize": 2,
+  "totalCount": 5,
+  "totalPages": 3,
+  "links": {
+    "self": "http://localhost:5000/api/usuarios?page=1&pageSize=2",
+    "next": "http://localhost:5000/api/usuarios?page=2&pageSize=2"
+  }
+}
+
+Motos
+
+POST /api/motos
+
+{
+  "placa": "ABC1234",
+  "renavam": "98765432100",
+  "modelo": "Honda CG",
+  "ano": 2022,
+  "quilometragem": 15000,
+  "status": "Disponivel",
+  "patioId": 1
+}
+
+
+GET /api/motos/1
+
+{
+  "id": 1,
+  "placa": "ABC1234",
+  "renavam": "98765432100",
+  "modelo": "Honda CG",
+  "ano": 2022,
+  "quilometragem": 15000,
+  "status": "Disponivel",
+  "patioId": 1
+}
+
+Sensores
+
+POST /api/sensores
+
+{
+  "numero": 101
+}
+
+
+GET /api/sensores/search?numero=101
+
+[
+  { "id": 1, "numero": 101 }
+]
+
+Endereços de Pátio
+
+POST /api/enderecopatios
+
+{
+  "logradouro": "Rua das Flores",
+  "numero": "123",
+  "estado": "SP",
+  "cep": "01234000",
+  "patio": "Pátio Central"
+}
+
+
+GET /api/enderecopatios/1
+
+{
+  "id": 1,
+  "logradouro": "Rua das Flores",
+  "numero": "123",
+  "estado": "SP",
+  "cep": "01234000",
+  "patio": "Pátio Central"
+}
 
 
 
