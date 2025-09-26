@@ -165,22 +165,22 @@ Swagger Usuarios:
 Schemas:
 
 ![image](https://github.com/user-attachments/assets/6bcb34b9-a1a5-47f2-98b7-1cfaca2a691c)
-
+___
 Payload:
-
+___
 Exemplos de Payloads
 
-Usuários
+**Usuários**
 
-POST /api/usuarios
+**POST /api/usuarios**
 
 {
   "nome": "Pedro Gomes",
   "email": "pedro.gomes@mottu.com"
 }
+___
 
-
-GET /api/usuarios?page=1&pageSize=2
+**GET /api/usuarios?page=1&pageSize=2**
 
 {
   "items": [
@@ -196,10 +196,10 @@ GET /api/usuarios?page=1&pageSize=2
     "next": "http://localhost:5000/api/usuarios?page=2&pageSize=2"
   }
 }
+___
+**Motos**
 
-Motos
-
-POST /api/motos
+**POST /api/motos**
 
 {
   "placa": "ABC1234",
@@ -211,8 +211,8 @@ POST /api/motos
   "patioId": 1
 }
 
-
-GET /api/motos/1
+___
+**GET /api/motos/1**
 
 {
   "id": 1,
@@ -225,16 +225,16 @@ GET /api/motos/1
   "patioId": 1
 }
 
-Sensores
+**Sensores**
 
-POST /api/sensores
+**POST /api/sensores**
 
 {
   "numero": 101
 }
 
 
-GET /api/sensores/search?numero=101
+**GET /api/sensores/search?numero=101**
 
 [
   { "id": 1, "numero": 101 }
@@ -242,7 +242,7 @@ GET /api/sensores/search?numero=101
 
 Endereços de Pátio
 
-POST /api/enderecopatios
+**POST /api/enderecopatios**
 
 {
   "logradouro": "Rua das Flores",
@@ -253,7 +253,7 @@ POST /api/enderecopatios
 }
 
 
-GET /api/enderecopatios/1
+**GET /api/enderecopatios/1**
 
 {
   "id": 1,
