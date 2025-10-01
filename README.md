@@ -107,23 +107,28 @@ DELETE:
 - Apresentar os retornos HTTP adequados para cada rota (ok, NotFound, BadRequest, NoContent, Created)
 OK:
 
-![image](https://github.com/user-attachments/assets/b57562c1-920d-4030-a370-4f83a001736d)
+<img width="842" height="188" alt="image" src="https://github.com/user-attachments/assets/28e48991-6c29-4945-bc37-d0abe7c7f8f0" />
+
 
 NotFound:
 
-![image](https://github.com/user-attachments/assets/0788ba9b-faf3-4147-ab60-7af4f3457ce2)
+<img width="648" height="156" alt="image" src="https://github.com/user-attachments/assets/80f81c50-b93e-40a8-b13f-3cd9098cf90d" />
+
 
 BadRequest:
 
-![image](https://github.com/user-attachments/assets/2dc66fcb-2051-4d36-ab08-ba42d73aecee)
+<img width="641" height="167" alt="image" src="https://github.com/user-attachments/assets/03c7d9e9-b0ee-4cb4-8a4c-99f8f47a5f64" />
+
 
 No Content:
 
-![image](https://github.com/user-attachments/assets/4317a720-f126-46cc-b5fe-48171a0e0530)
+<img width="597" height="299" alt="image" src="https://github.com/user-attachments/assets/2709f253-61ab-4efc-8ebe-d7742b075ff8" />
+
 
 Created:
 
-![image](https://github.com/user-attachments/assets/84414181-0a66-4362-889e-f7d0c9fae5e6)
+<img width="644" height="166" alt="image" src="https://github.com/user-attachments/assets/80f18f4b-1078-42de-abc6-5a30a979235d" />
+
 
 
  
