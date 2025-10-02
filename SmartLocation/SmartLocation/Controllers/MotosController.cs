@@ -93,7 +93,6 @@ namespace SmartLocation.Controllers
             }
 
             _contexto.Entry(moto).State = EntityState.Modified;
-
             try
             {
                 await _contexto.SaveChangesAsync();
