@@ -167,9 +167,10 @@ Swagger Usuarios:
 
 ![image](https://github.com/user-attachments/assets/1edb9520-8c43-4778-a694-f9826492e575)
 
-Schemas:
+Schemas (Com Paginação):
 
-![image](https://github.com/user-attachments/assets/6bcb34b9-a1a5-47f2-98b7-1cfaca2a691c)
+<img width="1096" height="526" alt="image" src="https://github.com/user-attachments/assets/02eb7e44-fcff-4d89-a6ce-06c5cc425b1d" />
+
 ___
 Payload:
 ___
