@@ -153,15 +153,15 @@ Redoc ou Scalar)
 
 Swagger EnderecoPatios:
 
-![image](https://github.com/user-attachments/assets/d1c6ffe0-b52c-4326-9dd6-cd27b997e329)
+<img width="1125" height="270" alt="image" src="https://github.com/user-attachments/assets/df9bbea3-ae5b-44a7-8e8d-c95decafb635" />
 
 Swagger Motos:
 
-![image](https://github.com/user-attachments/assets/cec61a4e-983a-48a7-b7d8-eb7b85db6052)
+<img width="1096" height="292" alt="image" src="https://github.com/user-attachments/assets/c090f6b3-ae80-42ac-8d1d-d4f5d6dd1565" />
 
 Swagger Sensores:
 
-![image](https://github.com/user-attachments/assets/c8b52c3e-8612-4aad-877c-93045d7daa8b)
+<img width="1091" height="296" alt="image" src="https://github.com/user-attachments/assets/4074e22d-b327-48f0-8cf8-a6153b0db558" />
 
 Swagger Usuarios:
 
@@ -169,7 +169,7 @@ Swagger Usuarios:
 
 Schemas (Com Paginação):
 
-<img width="1096" height="526" alt="image" src="https://github.com/user-attachments/assets/02eb7e44-fcff-4d89-a6ce-06c5cc425b1d" />
+<img width="1094" height="290" alt="image" src="https://github.com/user-attachments/assets/7d69de1b-d19c-4b5e-9211-7de3e1ba1aa1" />
 
 ___
 Payload:
