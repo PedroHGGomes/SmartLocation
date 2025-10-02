@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SmartLocation.Models;
 using SmartLocation.Api.Infrastructure;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace SmartLocation.Controllers
 {
@@ -16,14 +17,12 @@ namespace SmartLocation.Controllers
             _context = context;
         }
 
-        // GET: api/EnderecoPatios (com paginação + HATEOAS)
         [HttpGet]
-        public async Task<ActionResult<PagedResult<EnderecoPatio>>> GetEnderecosPatio(
-            [FromQuery] int page = 1,
-            [FromQuery] int pageSize = 10)
+        [SwaggerOperation(Summary = "Listar endereços de pátio")]
+        [SwaggerResponse(200, "Lista de endereços retornada com sucesso", typeof(PagedResult<EnderecoPatio>))]
+        public async Task<ActionResult<PagedResult<EnderecoPatio>>> GetEnderecosPatio([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
             var baseUrl = $"{Request.Scheme}://{Request.Host}{Request.Path}";
-
             var result = await _context.EnderecosPatio
                 .AsNoTracking()
                 .OrderBy(e => e.Id)
@@ -32,46 +31,37 @@ namespace SmartLocation.Controllers
             return Ok(result);
         }
 
-        // GET: api/EnderecoPatios/5
         [HttpGet("{id}")]
+        [SwaggerOperation(Summary = "Buscar endereço de pátio por ID")]
+        [SwaggerResponse(200, "Endereço encontrado", typeof(EnderecoPatio))]
+        [SwaggerResponse(404, "Endereço não encontrado")]
         public async Task<ActionResult<EnderecoPatio>> GetEnderecoPatio(int id)
         {
-            var enderecoPatio = await _context.EnderecosPatio
-                .AsNoTracking()
-                .FirstOrDefaultAsync(e => e.Id == id);
-
-            if (enderecoPatio == null)
-            {
-                return NotFound();
-            }
-
+            var enderecoPatio = await _context.EnderecosPatio.AsNoTracking().FirstOrDefaultAsync(e => e.Id == id);
+            if (enderecoPatio == null) return NotFound();
             return Ok(enderecoPatio);
         }
 
-        // POST: api/EnderecoPatios
         [HttpPost]
-        public async Task<ActionResult<EnderecoPatio>> PostEnderecoPatio(EnderecoPatio enderecoPatio)
+        [SwaggerOperation(Summary = "Criar endereço de pátio")]
+        [SwaggerResponse(201, "Endereço criado com sucesso", typeof(EnderecoPatio))]
+        [SwaggerResponse(400, "Dados inválidos")]
+        public async Task<ActionResult<EnderecoPatio>> PostEnderecoPatio([FromBody] EnderecoPatio enderecoPatio)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
+            if (!ModelState.IsValid) return BadRequest(ModelState);
             _context.EnderecosPatio.Add(enderecoPatio);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction(nameof(GetEnderecoPatio), new { id = enderecoPatio.Id }, enderecoPatio);
         }
 
-        // PUT: api/EnderecoPatios/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutEnderecoPatio(int id, EnderecoPatio enderecoPatio)
+        [SwaggerOperation(Summary = "Atualizar endereço de pátio")]
+        [SwaggerResponse(204, "Endereço atualizado com sucesso")]
+        [SwaggerResponse(400, "Dados inválidos ou ID inconsistente")]
+        [SwaggerResponse(404, "Endereço não encontrado")]
+        public async Task<IActionResult> PutEnderecoPatio(int id, [FromBody] EnderecoPatio enderecoPatio)
         {
-            if (id != enderecoPatio.Id)
-            {
-                return BadRequest("ID da URL diferente do objeto enviado.");
-            }
-
+            if (id != enderecoPatio.Id) return BadRequest("ID da URL diferente do objeto enviado.");
             _context.Entry(enderecoPatio).State = EntityState.Modified;
 
             try
@@ -80,37 +70,27 @@ namespace SmartLocation.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!EnderecoPatioExists(id))
-                {
-                    return NotFound();
-                }
+                if (!_context.EnderecosPatio.Any(e => e.Id == id)) return NotFound();
                 throw;
             }
-
             return NoContent();
         }
 
-        // DELETE: api/EnderecoPatios/5
         [HttpDelete("{id}")]
+        [SwaggerOperation(Summary = "Excluir endereço de pátio")]
+        [SwaggerResponse(204, "Endereço excluído com sucesso")]
+        [SwaggerResponse(404, "Endereço não encontrado")]
         public async Task<IActionResult> DeleteEnderecoPatio(int id)
         {
             var enderecoPatio = await _context.EnderecosPatio.FindAsync(id);
-            if (enderecoPatio == null)
-            {
-                return NotFound();
-            }
+            if (enderecoPatio == null) return NotFound();
 
             _context.EnderecosPatio.Remove(enderecoPatio);
             await _context.SaveChangesAsync();
-
             return NoContent();
-        }
-
-        private bool EnderecoPatioExists(int id)
-        {
-            return _context.EnderecosPatio.Any(e => e.Id == id);
         }
     }
 }
+
 
 
