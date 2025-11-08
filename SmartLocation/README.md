@@ -5,12 +5,12 @@
 
 #SmartLocation
 
-Descri├º├úo da Solu├º├úo:
+Descrição da Solução:
 
--	Descri├º├úo dos objetivos da solu├º├úo idealizada:
+-	Descrição dos objetivos da solução idealizada:
 
- A solu├º├úo envolve desenvolver um sistema de localiza├º├úo de cada moto em tempo real, com a utiliza├º├úo de tags bluetooth e mapa digital em tempo real.
-Utilizaremos tanto o visual, com identifica├º├Áes num├®ricas de cada moto, e dentro desse objeto, colocaremos nossas tags para que seja poss├¡vel realizar o rastreio.
+ A solução envolve desenvolver um sistema de localização de cada moto em tempo real, com a utilização de tags bluetooth e mapa digital em tempo real.
+Utilizaremos tanto o visual, com identificações num├®ricas de cada moto, e dentro desse objeto, colocaremos nossas tags para que seja possível realizar o rastreio.
 Objetivos principais:
  ÔÇó	Rastrear em tempo real cada moto dentro do p├ítio.
  ÔÇó	Melhorar o controle de cada motocicleta estacionada.
@@ -75,7 +75,7 @@ Acesse o Swagger:
 http://localhost:5254/swagger
 <br>
 ________________________________________________________________________________________
-Resumo do C├│digo: <br>
+Resumo do Código: <br>
 
 
 - Implementar uma API Restful utilizando ASP.NET Core (Controllers ou Minimal API) 
@@ -132,23 +132,23 @@ Created:
 
 
  
-- Integra├º├úo do Banco de dados Oracle via EF Core, com utiliza├º├úo de migrations para cria├º├úo das tabelas
- Altera├º├úo feita no .json:
+- Integração do Banco de dados Oracle via EF Core, com utilização de migrations para criação das tabelas
+ Alteração feita no .json:
  
 ![image](https://github.com/user-attachments/assets/c4773195-55ab-4183-85a7-2ffbf7ee4216)
 
-Cria├º├úo nos modelos:
+Criação nos modelos:
 
 ![image](https://github.com/user-attachments/assets/8b48cad3-3f53-4332-9d42-f217e1c7ae3c)
 ![image](https://github.com/user-attachments/assets/70c1efb0-7c04-4c4c-9df7-5b3af584e462)
 
-Conex├úo com Oracle no program.cs:
+Conexão com Oracle no program.cs:
 
 ![image](https://github.com/user-attachments/assets/e980b1e1-63eb-4e66-91f2-1afdbb2d3f6e)
 
 
 
-- Open API Implementada seguindo os padr├Áes para documenta├º├úo das API's com interface gr├ífica (Swagger, 
+- Open API Implementada seguindo os padrões para documentação das API's com interface gráfica (Swagger, 
 Redoc ou Scalar)
 
 Swagger c/ API KEY:
@@ -171,7 +171,7 @@ Swagger Usuarios:
 
 ![image](https://github.com/user-attachments/assets/1edb9520-8c43-4778-a694-f9826492e575)
 
-Schemas (Com Pagina├º├úo):
+Schemas (Com Paginação):
 
 <img width="1094" height="290" alt="image" src="https://github.com/user-attachments/assets/7d69de1b-d19c-4b5e-9211-7de3e1ba1aa1" />
 
@@ -294,7 +294,7 @@ Configurações:
   "DiskRoot": "C",
   "MinFreeGB": 1
 }
-
+```
 Endpoint /health/live
 
 <img width="373" height="290" alt="image" src="https://github.com/user-attachments/assets/fefcf434-efd6-482c-94ae-26b726428a8c" />
@@ -306,6 +306,7 @@ Endpoint /health/ready
 Endpoint /health
 
 <img width="414" height="577" alt="image" src="https://github.com/user-attachments/assets/ee5fff10-eee3-43d4-8328-1476401fa747" />
+
 
 
 
