@@ -10,14 +10,14 @@ Descrição da Solução:
 -	Descrição dos objetivos da solução idealizada:
 
  A solução envolve desenvolver um sistema de localização de cada moto em tempo real, com a utilização de tags bluetooth e mapa digital em tempo real.
-Utilizaremos tanto o visual, com identificações num├®ricas de cada moto, e dentro desse objeto, colocaremos nossas tags para que seja possível realizar o rastreio.
+Utilizaremos tanto o visual, com identificações numéricas de cada moto, e dentro desse objeto, colocaremos nossas tags para que seja possível realizar o rastreio.
 Objetivos principais:
- ÔÇó	Rastrear em tempo real cada moto dentro do p├ítio.
- ÔÇó	Melhorar o controle de cada motocicleta estacionada.
- ÔÇó	Melhorar a efici├¬ncia operacional.
- ÔÇó	Aumentar a produtividade de cada funcion├írio ├á fim de reduzir custos.
- ÔÇó	Redu├º├úo do tempo de busca para encontrar uma motocicleta espec├¡fica.
- ÔÇó	Realizar uma organiza├º├úo visual dentro do p├ítio.
+ - Rastrear em tempo real cada moto dentro do pátio.
+ - Melhorar o controle de cada motocicleta estacionada.
+ - Melhorar a eficiência operacional.
+ - Aumentar a produtividade de cada funcionário á fim de reduzir custos.
+ - Redução do tempo de busca para encontrar uma motocicleta espec├¡fica.
+ - Realizar uma organiza├º├úo visual dentro do p├ítio.
 
 Exemplo visual:
 
@@ -306,6 +306,7 @@ Endpoint /health/ready
 Endpoint /health
 
 <img width="414" height="577" alt="image" src="https://github.com/user-attachments/assets/ee5fff10-eee3-43d4-8328-1476401fa747" />
+
 
 
 
