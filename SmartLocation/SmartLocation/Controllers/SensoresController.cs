@@ -1,3 +1,4 @@
+using Asp.Versioning;
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SmartLocation.Models;
@@ -7,8 +8,9 @@ using Swashbuckle.AspNetCore.Annotations;
 namespace SmartLocation.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
-    public class SensoresController : ControllerBase
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiVersion("1.0")]
+public class SensoresController : ControllerBase
     {
         private readonly Contexto _contexto;
 

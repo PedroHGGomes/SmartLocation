@@ -1,0 +1,22 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build
+bin/
+obj/
+TestResults/
+*.log
+*.tlog
+
+# IDEs
+.vscode/
+.idea/
+
+# Configurações locais
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
