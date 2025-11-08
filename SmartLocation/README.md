@@ -17,7 +17,7 @@ Objetivos principais:
  - Melhorar a eficiência operacional.
  - Aumentar a produtividade de cada funcionário á fim de reduzir custos.
  - Redução do tempo de busca para encontrar uma motocicleta espec├¡fica.
- - Realizar uma organiza├º├úo visual dentro do p├ítio.
+ - Realizar uma organização visual dentro do pátio.
 
 Exemplo visual:
 
@@ -33,21 +33,17 @@ Optamos por uma arquitetura ASP.NET Core Web API com Entity Framework Core integ
 
 Essa escolha foi feita porque:
 
- ÔÇó O EF Core facilita o mapeamento objeto-relacional, simplificando a persist├¬ncia dos dados.
-
- ÔÇó Migrations permitem versionamento do banco e facilidade de evolu├º├úo do schema.
-
- ÔÇó A separa├º├úo em Controllers, Models e DataContext segue boas pr├íticas REST.
-
- ÔÇó Swagger/OpenAPI fornece documenta├º├úo interativa, simplificando testes e integra├º├úo.
-
- ÔÇó A arquitetura ├® escal├ível e permite futuras integra├º├Áes com IoT (sensores) e aplicativos m├│veis.
+ - O EF Core facilita o mapeamento objeto-relacional, simplificando a persistência dos dados.
+ - Migrations permitem versionamento do banco e facilidade de evolução do schema.
+ - A separação em Controllers, Models e DataContext segue boas pr├íticas REST.
+ - Swagger/OpenAPI fornece documentação interativa, simplificando testes e integração.
+ - A arquitetura é escalável e permite futuras integrações com IoT (sensores) e aplicativos móveis.
 
 Como executar a API:<br>
 
 
-Clone este reposit├│rio:
-
+Clone este repositório:
+<br>
 git clone https://github.com/PedroHGGomes/SmartLocation.git
 <br>
 cd SmartLocation
@@ -306,6 +302,7 @@ Endpoint /health/ready
 Endpoint /health
 
 <img width="414" height="577" alt="image" src="https://github.com/user-attachments/assets/ee5fff10-eee3-43d4-8328-1476401fa747" />
+
 
 
 
